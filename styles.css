@@ -40,15 +40,33 @@ body {
     gap: 20px;
 }
 
+.game-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.cw-logo {
+    height: 56px;
+    margin-top: 4px;
+}
+
+.cw-logo-small {
+    height: 56px;
+    margin-bottom: 8px;
+}
+
 .score-panel {
     display: flex;
     justify-content: space-between;  /* Space between score and button */
     align-items: center;
     width: 800px;
     padding: 10px;
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    border: 2px solid #e6f7ff; /* subtle brand accent */
 }
 
 .timer {
@@ -60,26 +78,27 @@ body {
 #game-container {
     width: 800px;
     height: 600px;
-    background-color: #e6f7ff;
-    border: 2px solid #333;
+    background: linear-gradient(180deg,#e6f7ff 0%, #f7fbfe 100%);
+    border: 2px solid #2E9DF7;
     border-radius: 8px;
     position: relative;
     overflow: hidden;
 }
 
 
-#start-btn {
+#start-btn, #restart-btn {
     padding: 8px 16px;
-    background-color: #4CAF50;
+    background-color: #2E9DF7; /* charity: water blue */
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 16px;
+    box-shadow: 0 2px 4px rgba(46,157,247,0.25);
 }
 
-#start-btn:hover {
-    background-color: #45a049;
+#start-btn:hover, #restart-btn:hover {
+    background-color: #2387db;
 }
 
 .score {
@@ -107,7 +126,8 @@ body {
 }
 
 .bad-drop {
-    background-color: #ff4444;
+    background-color: #0b0b0b; /* dirty black */
+    box-shadow: inset 0 -6px 10px rgba(255,255,255,0.02);
 }
 
 .game-title {
@@ -142,4 +162,41 @@ body {
     #game-container {
         height: 70vh;
     }
+}
+
+/* End game overlay */
+#end-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.35);
+    z-index: 30;
+}
+
+/* Ensure hiding the overlay overrides the ID rule */
+#end-overlay.hidden { display: none; }
+
+.hidden { display: none; }
+
+.end-card {
+    background: white;
+    padding: 24px 28px;
+    border-radius: 10px;
+    text-align: center;
+    width: min(420px, 90%);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    border-top: 6px solid #2E9DF7;
+}
+
+.end-card h2 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.end-card p {
+    margin-bottom: 16px;
+    color: #333;
+    font-size: 18px;
 }
