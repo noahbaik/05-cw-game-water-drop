@@ -183,6 +183,11 @@ body {
     justify-content: center;
     background: rgba(0,0,0,0.35);
     z-index: 30;
+    pointer-events: none;
+}
+
+#end-overlay .end-card {
+    pointer-events: auto;
 }
 
 /* Ensure hiding the overlay overrides the ID rule */
