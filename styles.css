@@ -69,6 +69,11 @@ body {
     border: 2px solid #e6f7ff; /* subtle brand accent */
 }
 
+.controls {
+    display: flex;
+    gap: 10px;
+}
+
 .timer {
     flex: 0 1 auto;
     font-size: 24px;
@@ -86,7 +91,7 @@ body {
 }
 
 
-#start-btn, #restart-btn {
+#start-btn, #restart-btn, #reset-btn {
     padding: 8px 16px;
     background-color: #2E9DF7; /* charity: water blue */
     color: white;
@@ -97,8 +102,13 @@ body {
     box-shadow: 0 2px 4px rgba(46,157,247,0.25);
 }
 
-#start-btn:hover, #restart-btn:hover {
+#start-btn:hover, #restart-btn:hover, #reset-btn:hover {
     background-color: #2387db;
+}
+
+#start-btn:disabled, #restart-btn:disabled, #reset-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 .score {

@@ -18,14 +18,20 @@ const loseMessages = [
 ];
 
 // Wait for button click to start the game
-document.getElementById("start-btn").addEventListener("click", startGame);
-document.getElementById("restart-btn").addEventListener("click", startGame);
+const startBtn = document.getElementById("start-btn");
+const resetBtn = document.getElementById("reset-btn");
+const restartBtn = document.getElementById("restart-btn");
+
+startBtn.addEventListener("click", startGame);
+resetBtn.addEventListener("click", resetGame);
+restartBtn.addEventListener("click", startGame);
 
 function startGame() {
   // Prevent multiple games from running at once
   if (gameRunning) return;
 
   gameRunning = true;
+  resetBtn.disabled = false;
 
   // Reset score and timer UI
   score = 0;
@@ -98,6 +104,19 @@ function createDrop() {
   });
 }
 
+function resetGame() {
+  clearInterval(dropMaker);
+  clearInterval(timerInterval);
+  gameRunning = false;
+  score = 0;
+  timeLeft = 30;
+  document.getElementById("score").textContent = score;
+  document.getElementById("time").textContent = timeLeft;
+  document.getElementById("end-overlay").classList.add("hidden");
+  document.querySelectorAll('.water-drop').forEach(d => d.remove());
+  resetBtn.disabled = true;
+}
+
 function endGame() {
   gameRunning = false;
   clearInterval(dropMaker);
@@ -116,4 +135,5 @@ function endGame() {
   document.getElementById('end-title').textContent = title;
   document.getElementById('end-message').textContent = message;
   document.getElementById('end-overlay').classList.remove('hidden');
+  resetBtn.disabled = false;
 }
